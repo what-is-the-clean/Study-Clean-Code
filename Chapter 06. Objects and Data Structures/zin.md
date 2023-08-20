@@ -17,38 +17,62 @@ Additionally, there's no need to expose responsibilities and roles within the co
 ## **Information Abstraction**
 
 추상 인터페이스를 사용해 class의 구체적인 구현 내용과 관계 없이, 핵심 내용을 정의 및 사용할 수 있어야 한다.  
-Using an abstract interface, the core content should be defined and accessible within the class, regardless of the specific implementation details.
+_Using an abstract interface, the core content should be defined and accessible within the class, regardless of the specific implementation details._
 
-#### **Specific Class**
+#### **Abstract & Concrete Class**
 
-```kotlin
-class Point(
-    val x: Double, 
-    val y: Double
-)
 ```
-
--   서로 직교하는 축을 사용하여 점의 위치를 지정하는 즉, 직교좌표계를 사용하는 class임을 알 수 있다.  
-    It can be inferred that the class uses an orthogonal coordinate system, where the position of points is specified using axes that are perpendicular to each other.
-
-#### **Abstract Class**
-
-```kotlin
-interface Point {
-    fun getX(): Double
-    fun getY(): Double
-    fun setCartesian(x: Double, y: Double)
-
-    fun getR(): Double
-    fun getTheta(): Double
-    fun setPolar(r: Double, theta: Double)
+class Rectangle(
+    val width: Int, 
+    val height: Int,
+) {
+	fun area(): Int {
+    	return width * height
+    }
 }
 ```
 
--   반면 Point가 표현할 수 있는 모든 것을 구성할 수 있도록 추상화된 class이다.  
-    On the other hand, it is an abstract class that can compose everything that Point can represent.
--   직교좌표계를 사용하는지, 극좌표계를 사용하는지 알 수 없다. 이 Class를 통해 구현된 domain이 이를 정의할 수 있을 것이다.  
-    It is not known whether it uses an orthogonal coordinate system or a polar coordinate system. The domain implemented through this class will be able to define it.
+-   가로x세로가 넓이를 의미하는 사각형이라는 class임을 구체적으로 알 수 있다.  
+    _It can be specifically understood that a rectangle represents a class in which the product of the width and height represents the area._
+
+#### **Abstract & Concrete Class**
+
+```kotlin
+abstract class Shape(
+	val width: Int, 
+    val height: Int,
+) {
+    abstract fun area(): Int
+}
+
+class Rectangle(
+	width: Int, 
+    height: Int,
+) : Shape(width, height) {
+    override fun area(): Int {
+    	return width * height
+    }
+}
+```
+
+```kotlin
+interface Shape {
+    val width: Int,
+    val height: Int,
+}
+
+data class Rectangle (
+	override val width: Int,
+    override val height: Int,
+) : Shape {
+	val area get() = width * height
+}
+```
+
+-   반면 Shape를 abstract 혹은 interface로 area의 구성 가능성을 열어둔다.  
+    _On the other hand, defining Shape as an abstract class or interface opens up the possibility of configuring the calculation of area._
+-   area 계산 세부 로직을 알 수 없다. 이 Class를 통해 구현된 domain이 이를 정의할 수 있을 것이다.  
+    _The specific details of how the area calculation is performed are not revealed._
 
 ---
 
