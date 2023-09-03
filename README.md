@@ -4,11 +4,6 @@ Use [Clean Code](https://www.amazon.com/Clean-Code-Handbook-Software-Craftsmansh
 
 ### 👨‍👩‍👧‍👦 Members
 - 👑 [Zin](https://github.com/iamzin)
-- [Arthur](https://github.com/changchanghwang)
-- [Chan Hyeok](https://github.com/choichanhyeok)
-- [Hyo Jin](https://github.com/hyojin-dev)
-- [Jae Won](https://github.com/jwp345)
-- [Seung Bin](https://github.com/kimseungbin)
 
 ### 📌 Rules
 - Use pull request for each topic.
@@ -28,3 +23,4 @@ Use [Clean Code](https://www.amazon.com/Clean-Code-Handbook-Software-Craftsmansh
 - <code>10th week</code> Chapter 15. JUnit Internals
 - <code>11th week</code> Chapter 16. Refactoring SerialDate
 - <code>12th week</code> Chapter 17. Smells and Heuristics
+
